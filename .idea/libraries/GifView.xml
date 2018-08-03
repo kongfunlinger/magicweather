@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="GifView">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/src/main/gifLibs/GifView.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/GifView.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

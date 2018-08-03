@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.xidian.flyhigher.magicweather.gson.Forecast;
@@ -59,30 +58,30 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
                 .inflate(R.layout.weather_item,parent,false);
         final ViewHolder holder = new ViewHolder(view,mItemWidth);
 
-        holder.weatherView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Forecast forecast = mForecastList.get(position);
-                Toast.makeText(view.getContext(),"You clicked view"+ forecast.date,Toast.LENGTH_SHORT).show();
-            }
-
-        });
-        holder.weatherImage.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Forecast forecast = mForecastList.get(position);
-                Toast.makeText(view.getContext(),"You clicked image"+ forecast.temperature,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.weatherView.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                int position = holder.getAdapterPosition();
+//                Forecast forecast = mForecastList.get(position);
+//                Toast.makeText(view.getContext(),"You clicked view"+ forecast.date,Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
+//        holder.weatherImage.setOnClickListener( new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                int position = holder.getAdapterPosition();
+//                Forecast forecast = mForecastList.get(position);
+//                Toast.makeText(view.getContext(),"You clicked image"+ forecast.temperature,Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int position) {
 
-        Forecast forecast = mForecastList.get(position);
+        Forecast forecast = mForecastList.get(position +1);
         String weatherPic = "http://files.heweather.com/cond_icon/"+ forecast.more.info_code +".png";
         Glide.with(context).load(weatherPic).into(holder.weatherImage);
         //holder.weatherImage.setImageResource(R.drawable.weather_rain);
@@ -93,6 +92,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mForecastList.size();
+        return mForecastList.size()-1;
     }
 }
